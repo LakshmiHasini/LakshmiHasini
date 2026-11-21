@@ -2,6 +2,8 @@
 
 The profile itself is `README.md`. All its images are committed to `assets/`; visitors do not depend on a third-party stats-card service.
 
+The generated image names include `-sage` so the restored palette uses different URLs from the earlier violet images. Keep the README links and generator filenames in sync when changing themes, since GitHub and browsers can cache images at an unchanged URL.
+
 ## Daily updates
 
 `.github/workflows/refresh-profile.yml` refreshes the GitHub calendar, LeetCode solved totals, and HackerRank submission activity every day around **06:17 IST**. It also supports **Actions → Refresh profile activity → Run workflow**. Scheduled runs can be delayed by GitHub and may be disabled after extended repository inactivity.

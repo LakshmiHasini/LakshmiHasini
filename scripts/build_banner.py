@@ -71,7 +71,7 @@ def main():
     portrait = ImageEnhance.Contrast(portrait).enhance(1.15)
     still = dither(portrait)
     composed = compose(still)
-    composed.save(ASSETS / "dither-banner.png", optimize=True)
+    composed.save(ASSETS / "dither-banner-sage.png", optimize=True)
     # A travelling band shifts between two pixel sizes, then settles on the portrait.
     # This keeps the original face visible throughout the entire loop.
     alternate = dither(portrait, pixel_size=5)
@@ -85,8 +85,8 @@ def main():
         mask = mask.filter(ImageFilter.GaussianBlur(22))
         frames.append(compose(Image.composite(alternate, still, mask)))
     frames.append(composed)
-    save_gif(frames, ASSETS / "dither-banner.gif", duration=70, hold=2700)
-    print("Built dither-banner.gif and its still-image alternative from the supplied photo.")
+    save_gif(frames, ASSETS / "dither-banner-sage.gif", duration=70, hold=2700)
+    print("Built dither-banner-sage.gif and its still-image alternative from the supplied photo.")
 
 
 if __name__ == "__main__":

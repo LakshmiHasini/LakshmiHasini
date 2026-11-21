@@ -160,7 +160,7 @@ def draw_activity(data):
     for i, color in enumerate(GRID):
         draw.rounded_rectangle((1040 + i * 23, 307, 1056 + i * 23, 323), radius=3, fill=color)
     draw.text((1166, 306), "More", font=font(14), fill=MUTED)
-    image.save(ASSETS / "github-activity.png", optimize=True)
+    image.save(ASSETS / "github-activity-sage.png", optimize=True)
     frames = []
     # Only the cursor animates: every square always represents the real count.
     for column in range(len(weeks)):
@@ -171,7 +171,7 @@ def draw_activity(data):
                              radius=5, outline=ACCENT, width=1)
         frames.append(frame)
     frames.append(image)
-    save_gif(frames, ASSETS / "github-activity.gif", duration=60, hold=2200)
+    save_gif(frames, ASSETS / "github-activity-sage.gif", duration=60, hold=2200)
 
 
 def svg_text(x, y, text, size=17, fill=FG, weight="400", anchor="start", mono=False):
@@ -205,18 +205,18 @@ def draw_cards(state, config):
         c = d["solved"]
         detail = f"Easy {c['Easy']}   ·   Medium {c['Medium']}   ·   Hard {c['Hard']}"
         svg = card("LeetCode", config["leetcode"], c["All"], "unique questions solved", detail, verified_label(d), "<>")
-        (ASSETS / "leetcode.svg").write_text(svg)
+        (ASSETS / "leetcode-sage.svg").write_text(svg)
     if "hackerrank" in state:
         d = state["hackerrank"]
         active = f"{d['activeDays']} active practice days"
         svg = card("HackerRank", config["hackerrank"], d["submissions"], "submissions across my practice history",
                    active, verified_label(d), "H")
-        (ASSETS / "hackerrank.svg").write_text(svg)
+        (ASSETS / "hackerrank-sage.svg").write_text(svg)
     for platform, title, icon in [("leetcode", "LeetCode", "<>"), ("hackerrank", "HackerRank", "H")]:
         if platform not in state:
             svg = card(title, config[platform], "—", "Statistics temporarily unavailable",
                        "Open my profile for current activity", "Awaiting a verified refresh", icon)
-            (ASSETS / f"{platform}.svg").write_text(svg)
+            (ASSETS / f"{platform}-sage.svg").write_text(svg)
 
 
 def draw_unavailable_activity():
@@ -224,8 +224,8 @@ def draw_unavailable_activity():
     draw = ImageDraw.Draw(image)
     draw.text((38, 55), "Activity temporarily unavailable", font=font(32, bold=True), fill=FG)
     draw.text((38, 125), "Open my GitHub profile for the current contribution calendar.", font=font(24), fill=MUTED)
-    image.save(ASSETS / "github-activity.png")
-    image.save(ASSETS / "github-activity.gif")
+    image.save(ASSETS / "github-activity-sage.png")
+    image.save(ASSETS / "github-activity-sage.gif")
 
 
 def main():

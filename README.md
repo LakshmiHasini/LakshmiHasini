@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/dither-banner.png">
-  <img src="assets/dither-banner.gif" alt="Lakshmi Hasini — where logic meets design, with an animated dither portrait of me" width="100%">
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/dither-banner-sage.png">
+  <img src="assets/dither-banner-sage.gif" alt="Lakshmi Hasini — where logic meets design, with an animated dither portrait of me" width="100%">
 </picture>
 
 <p align="center">
@@ -88,15 +88,15 @@ A decentralised marketplace for freight shipping and freelancing on Flare, with 
 
 <a href="https://github.com/LakshmiHasini?tab=overview">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/github-activity.png">
-    <img src="assets/github-activity.gif" alt="My GitHub contribution calendar for the past year" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/github-activity-sage.png">
+    <img src="assets/github-activity-sage.gif" alt="My GitHub contribution calendar for the past year" width="100%">
   </picture>
 </a>
 
 <details>
 <summary>Prefer a still image?</summary>
 
-![GitHub contribution calendar without animation](assets/github-activity.png)
+![GitHub contribution calendar without animation](assets/github-activity-sage.png)
 
 </details>
 
@@ -104,10 +104,10 @@ A decentralised marketplace for freight shipping and freelancing on Flare, with 
 
 <p>
   <a href="https://leetcode.com/u/Lakshmihasini_13/">
-    <img src="assets/leetcode.svg" alt="My LeetCode solved problems, split into easy, medium, and hard" width="49%">
+    <img src="assets/leetcode-sage.svg" alt="My LeetCode solved problems, split into easy, medium, and hard" width="49%">
   </a>
   <a href="https://www.hackerrank.com/profile/lakshmihasini8">
-    <img src="assets/hackerrank.svg" alt="My HackerRank submission activity and active practice days" width="49%">
+    <img src="assets/hackerrank-sage.svg" alt="My HackerRank submission activity and active practice days" width="49%">
   </a>
 </p>
 
