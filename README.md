@@ -88,15 +88,15 @@ A decentralised marketplace for freight shipping and freelancing on Flare, with 
 
 <a href="https://github.com/LakshmiHasini?tab=overview">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/github-activity-sage.png">
-    <img src="assets/github-activity-sage.gif" alt="My GitHub contribution calendar for the past year" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/github-activity-3d-sage.png">
+    <img src="assets/github-activity-3d-sage.gif" alt="My real GitHub contribution calendar transforms into a 3D heatmap, with columns sized by daily contributions" width="100%">
   </picture>
 </a>
 
 <details>
 <summary>Prefer a still image?</summary>
 
-![GitHub contribution calendar without animation](assets/github-activity-sage.png)
+![3D GitHub contribution heatmap without animation](assets/github-activity-3d-sage.png)
 
 </details>
 

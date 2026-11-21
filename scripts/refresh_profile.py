@@ -7,7 +7,6 @@ import argparse
 from datetime import date, datetime, timezone
 from html import escape
 import json
-import math
 import os
 import subprocess
 import sys
@@ -17,7 +16,8 @@ import urllib.request
 
 from PIL import Image, ImageDraw
 
-from art import ACCENT, ASSETS, BG, FG, GRID, MUTED, ROOT, font, save_gif
+from art import ACCENT, ASSETS, BG, FG, MUTED, ROOT, font
+from activity_chart import GIF_NAME, PNG_NAME, render_activity
 
 DATA_PATH = ROOT / "data" / "profile-stats.json"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; PersonalProfileReadme/1.0)", "Accept": "application/json"}
@@ -129,49 +129,7 @@ def verified_label(data):
 
 
 def draw_activity(data):
-    weeks = data["weeks"]
-    image = Image.new("RGB", (1280, 350), BG)
-    draw = ImageDraw.Draw(image)
-    draw.rounded_rectangle((0, 0, 1279, 349), radius=20, outline="#314039", width=2)
-    draw.text((38, 27), "A year of building.", font=font(30, bold=True), fill=FG)
-    headline = f"{data['totalContributions']:,} contributions"
-    draw.text((1238, 34), headline, font=font(20, mono=True), fill=ACCENT, anchor="rt")
-    cell, step, left, top = 16, 21, 89, 117
-    last_month = None
-    for column, week in enumerate(weeks):
-        for day in week["contributionDays"]:
-            current = date.fromisoformat(day["date"])
-            if current.day <= 7 and current.month != last_month:
-                draw.text((left + column * step, 82), current.strftime("%b"), font=font(15), fill=MUTED)
-                last_month = current.month
-                break
-        for day in week["contributionDays"]:
-            value = day["contributionCount"]
-            level = 0 if value == 0 else min(4, 1 + int(math.log2(value)))
-            x = left + column * step
-            y = top + day["weekday"] * step
-            draw.rounded_rectangle((x, y, x + cell, y + cell), radius=3, fill=GRID[level])
-    for row, label in [(1, "Mon"), (3, "Wed"), (5, "Fri")]:
-        draw.text((35, top + row * step + 1), label, font=font(14), fill=MUTED)
-    dates = [d["date"] for week in weeks for d in week["contributionDays"]]
-    label = f"{min(dates)} — {max(dates)}  /  {verified_label(data)}"
-    draw.text((38, 307), label, font=font(14, mono=True), fill=MUTED)
-    draw.text((1000, 306), "Less", font=font(14), fill=MUTED)
-    for i, color in enumerate(GRID):
-        draw.rounded_rectangle((1040 + i * 23, 307, 1056 + i * 23, 323), radius=3, fill=color)
-    draw.text((1166, 306), "More", font=font(14), fill=MUTED)
-    image.save(ASSETS / "github-activity-sage.png", optimize=True)
-    frames = []
-    # Only the cursor animates: every square always represents the real count.
-    for column in range(len(weeks)):
-        frame = image.copy()
-        fd = ImageDraw.Draw(frame)
-        x = left + column * step - 3
-        fd.rounded_rectangle((x, top - 5, x + cell + 6, top + 6 * step + cell + 5),
-                             radius=5, outline=ACCENT, width=1)
-        frames.append(frame)
-    frames.append(image)
-    save_gif(frames, ASSETS / "github-activity-sage.gif", duration=60, hold=2200)
+    render_activity(data)
 
 
 def svg_text(x, y, text, size=17, fill=FG, weight="400", anchor="start", mono=False):
@@ -224,19 +182,23 @@ def draw_unavailable_activity():
     draw = ImageDraw.Draw(image)
     draw.text((38, 55), "Activity temporarily unavailable", font=font(32, bold=True), fill=FG)
     draw.text((38, 125), "Open my GitHub profile for the current contribution calendar.", font=font(24), fill=MUTED)
-    image.save(ASSETS / "github-activity-sage.png")
-    image.save(ASSETS / "github-activity-sage.gif")
+    image.save(ASSETS / PNG_NAME)
+    image.save(ASSETS / GIF_NAME)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--render-only", action="store_true", help="Render previously verified data without network requests")
+    parser.add_argument("--github-only", action="store_true", help="Refresh and render the GitHub chart without changing coding-platform cards")
     args = parser.parse_args()
     config = json.loads((ROOT / "profile.json").read_text())
     state = json.loads(DATA_PATH.read_text()) if DATA_PATH.exists() else {}
     failures = []
     if not args.render_only:
-        for platform, fetch in [("github", fetch_github), ("leetcode", fetch_leetcode), ("hackerrank", fetch_hackerrank)]:
+        providers = [("github", fetch_github)]
+        if not args.github_only:
+            providers += [("leetcode", fetch_leetcode), ("hackerrank", fetch_hackerrank)]
+        for platform, fetch in providers:
             username = config[platform]
             # A changed handle must never display the previous person's cached statistics.
             if state.get(platform, {}).get("username") not in (None, username):
@@ -259,12 +221,14 @@ def main():
         draw_activity(state["github"])
     else:
         draw_unavailable_activity()
-    draw_cards(state, config)
-    missing = [key for key in ("github", "leetcode", "hackerrank") if key not in state]
+    if not args.github_only:
+        draw_cards(state, config)
+    required = ("github",) if args.github_only else ("github", "leetcode", "hackerrank")
+    missing = [key for key in required if key not in state]
     if missing or failures:
         print("Refresh incomplete: " + ", ".join(sorted(set(missing + failures))), file=sys.stderr)
         return 1
-    print("Rendered contribution animation, still image, and both practice cards.")
+    print("Rendered contribution animation and still image." if args.github_only else "Rendered contribution animation, still image, and both practice cards.")
     return 0
 
 

@@ -10,7 +10,9 @@ The generated image names include `-sage` so the restored palette uses different
 
 The workflow uses the automatically supplied `GITHUB_TOKEN`, with `contents: write` permission to commit generated images. No personal access token needs to be stored in the repository. The workflow must be present on the default `main` branch and Actions must be enabled for the schedule to run.
 
-GitHub uses the actual contribution calendar, including its actual dates and counts. Only the cursor animates; it does not add contributions. LeetCode uses the public profile's unique accepted-question totals. HackerRank's public submission history counts attempts rather than distinct solved questions, so the card explicitly says **submissions**. Hackos points are not used as a solved-question count.
+GitHub uses the actual contribution calendar, including its actual dates and counts. Its tiles lift into a 3D heatmap and the camera shifts gently; column heights reflect daily counts and the animation adds no contributions. The PNG is a still of the 3D view. LeetCode uses the public profile's unique accepted-question totals. HackerRank's public submission history counts attempts rather than distinct solved questions, so the card explicitly says **submissions**. Hackos points are not used as a solved-question count.
+
+The 3D chart is rendered by `scripts/activity_chart.py`. Its summary shows the total contributions, busiest day, longest consecutive streak, and streak ending on the latest day present in the calendar. Zero-contribution or missing days break a streak. To update only this chart, run `python scripts/refresh_profile.py --github-only`. The README plays a GIF, so the 3D camera movement is pre-rendered rather than controlled by the viewer.
 
 Each provider has its own verification timestamp in `data/profile-stats.json`. A failed request preserves that provider's previous verified numbers and date; successful providers still update. The workflow reports the incomplete refresh so it can be rerun. Source websites can change their public endpoints, so their availability is not guaranteed. GitHub image caching may briefly delay the visible refresh.
 

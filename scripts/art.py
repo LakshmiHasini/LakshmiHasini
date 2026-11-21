@@ -32,9 +32,9 @@ def font(size, bold=False, mono=False):
     return ImageFont.load_default(size=size)
 
 
-def save_gif(frames, path, duration=80, hold=2400):
+def save_gif(frames, path, duration=80, hold=2400, palette_source=None):
     # One shared palette avoids flickering text and unnecessary GIF file size.
-    palette = frames[-1].convert("RGB").quantize(colors=128)
+    palette = (palette_source if palette_source is not None else frames[-1]).convert("RGB").quantize(colors=128)
     indexed = [f.convert("RGB").quantize(palette=palette, dither=Image.Dither.NONE) for f in frames]
     durations = [duration] * len(indexed)
     durations[-1] = hold
