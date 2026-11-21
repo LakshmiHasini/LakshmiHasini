@@ -6,9 +6,9 @@ from PIL import Image, ImageColor, ImageDraw
 
 from art import ACCENT, ASSETS, BG, FG, GRID, MUTED, font, save_gif
 
-WIDTH, HEIGHT, SCALE = 1280, 660, 2
-GIF_NAME = "github-activity-3d-wave-sage.gif"
-PNG_NAME = "github-activity-3d-sage.png"
+WIDTH, HEIGHT, SCALE = 1280, 690, 2
+GIF_NAME = "github-activity-full-wave-sage.gif"
+PNG_NAME = "github-activity-full-wave-sage.png"
 
 
 def summary(data):
@@ -39,19 +39,14 @@ def ease(value):
     return value*value*(3-2*value)
 
 
-def wave_reveal(progress, week, weekday, week_count):
-    """Sweep diagonally across the calendar, then settle at the exact data height."""
-    position = (week+weekday*0.22)/max(1, week_count-1+6*0.22)
-    local = (progress-position*0.56)/0.44
-    if local <= 0:
-        return 0
-    if local >= 1:
-        return 1
-    # A soft overshoot gives the moving front a wave crest without changing the data.
-    return 1-(1-local)**3*math.cos(1.5*math.pi*local)
+def surface_displacement(week, weekday, week_count, phase, strength):
+    """A travelling wave deforms every floor tile and its attached pillar together."""
+    position = week/max(1, week_count-1)
+    angle = 2*math.pi*(1.4*position+weekday*0.035)-phase
+    return 30*strength*math.sin(angle)
 
 
-def render_frame(data, stats, lift=1, orbit=0):
+def render_frame(data, stats, lift=1, orbit=0, wave_phase=0, wave_strength=0):
     image = Image.new("RGB", (WIDTH*SCALE, HEIGHT*SCALE), BG)
     draw = ImageDraw.Draw(image)
 
@@ -75,18 +70,20 @@ def render_frame(data, stats, lift=1, orbit=0):
     text(1240, 32, "@"+data.get("username", "LakshmiHasini"), 18, MUTED, mono=True, anchor="rt")
     text(1240, 68, "REAL DAYS. REAL PROGRESS.", 13, MUTED, mono=True, anchor="rt")
 
-    # Both projections preserve weekday order; only the camera and height reveal change.
+    # Calendar heights remain measured from the moving surface, including empty days.
     p = ease(lift/0.3)
-    wave_progress = max(0, min(1, (lift-0.18)/0.82))
+    rise = ease((lift-0.12)/0.88)
+    wave_strength = max(0, min(1, wave_strength))
     ux = 21+(19-21)*p
     uy = (1.4+0.4*math.sin(orbit))*p
     vx = (-9+0.65*math.sin(orbit))*p
     vy = 21+(9+0.25*math.sin(orbit)-21)*p
     origin_x = 83+(110-83)*p
-    origin_y = 186+(280-186)*p
+    origin_y = 186+(280-186)*p+8*wave_strength
 
     def project(week, weekday, height=0):
-        return (origin_x+week*ux+weekday*vx, origin_y+week*uy+weekday*vy-height)
+        surface = surface_displacement(week, weekday, len(data["weeks"]), wave_phase, wave_strength)
+        return (origin_x+week*ux+weekday*vx, origin_y+week*uy+weekday*vy-height-surface)
 
     peak = max(1, stats["busiest"]["contributionCount"])
     blocks = []
@@ -94,12 +91,11 @@ def render_frame(data, stats, lift=1, orbit=0):
         for day in week["contributionDays"]:
             blocks.append((week_index, day["weekday"], day["contributionCount"]))
     # Paint the farthest rows first so foreground pillars occlude them correctly.
-    blocks.sort(key=lambda block: (project(block[0], block[1])[1], block[0]))
+    blocks.sort(key=lambda block: (block[0]*uy+block[1]*vy, block[0]))
     for week, weekday, value in blocks:
         size = 0.78
         level = 0 if value == 0 else min(4, 1+int(math.log2(value)))
-        reveal = wave_reveal(wave_progress, week, weekday, len(data["weeks"]))
-        height = (4+value/peak*151)*reveal if value else 0
+        height = (4+value/peak*151)*rise if value else 0
         base = [project(week, weekday), project(week+size, weekday),
                 project(week+size, weekday+size), project(week, weekday+size)]
         top = [(x, y-height) for x, y in base]
@@ -119,18 +115,21 @@ def render_frame(data, stats, lift=1, orbit=0):
             x, y = project(column, 7.6)
             text(x, y+12, month.strftime("%b"), 15, MUTED)
             last_month = month.month
+    # The weekday labels follow the sheet as a group so they never bunch together.
+    label_surface = surface_displacement(-1.5, 3, len(data["weeks"]), wave_phase, wave_strength)
     for row, label in [(1, "Mon"), (3, "Wed"), (5, "Fri")]:
-        x, y = project(-1.5, row)
+        x = origin_x-1.5*ux+row*vx
+        y = origin_y-1.5*uy+row*vy-label_surface
         text(x-7, y+3, label, 14, MUTED, anchor="rt")
 
     # Summary values remain fixed throughout the animation.
-    text(36, 473, f"{stats['first']} — {stats['last']}", 14, MUTED, mono=True)
-    text(1030, 472, "Less", 14, MUTED)
+    text(36, 503, f"{stats['first']} — {stats['last']}", 14, MUTED, mono=True)
+    text(1030, 502, "Less", 14, MUTED)
     for index, color in enumerate(GRID):
         x = 1074+index*22
-        draw.rounded_rectangle((*xy((x, 474)), *xy((x+15, 489))), radius=3*SCALE, fill=color)
-    text(1192, 472, "More", 14, MUTED)
-    line([(36, 511), (1244, 511)], "#314039")
+        draw.rounded_rectangle((*xy((x, 504)), *xy((x+15, 519))), radius=3*SCALE, fill=color)
+    text(1192, 502, "More", 14, MUTED)
+    line([(36, 541), (1244, 541)], "#314039")
     busiest_date = date.fromisoformat(stats["busiest"]["date"]).strftime("%d %b")
     metrics = [
         (f"{stats['total']:,}", "contributions", "PAST YEAR"),
@@ -140,11 +139,11 @@ def render_frame(data, stats, lift=1, orbit=0):
     ]
     for index, (value, caption, label) in enumerate(metrics):
         x = 38+index*307
-        text(x, 532, label, 13, MUTED, mono=True)
-        text(x-1, 554, value, 34, ACCENT, bold=True)
-        text(x, 598, caption, 14, MUTED)
+        text(x, 562, label, 13, MUTED, mono=True)
+        text(x-1, 584, value, 34, ACCENT, bold=True)
+        text(x, 628, caption, 14, MUTED)
     verified = datetime.fromisoformat(data["verifiedAt"]).strftime("%d %b %Y")
-    text(1240, 638, "Verified "+verified, 12, MUTED, mono=True, anchor="rt")
+    text(1240, 668, "Verified "+verified, 12, MUTED, mono=True, anchor="rt")
     return image.resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
 
 
@@ -156,10 +155,21 @@ def render_activity(data):
     still.save(ASSETS / PNG_NAME, optimize=True)
     flat = render_frame(data, stats, lift=0)
     frames = [flat]*8
-    frames += [render_frame(data, stats, lift=index/48) for index in range(1, 49)]
-    frames += [render_frame(data, stats, orbit=index/24*2*math.pi) for index in range(1, 25)]
-    frames += [still]*45
-    frames += [render_frame(data, stats, lift=1-index/28) for index in range(1, 29)]
+    tick = 0
+    for index in range(1, 37):
+        tick += 1
+        lift = index/36
+        frames.append(render_frame(data, stats, lift=lift,
+                                   wave_phase=tick/32*2*math.pi, wave_strength=ease(lift)))
+    for index in range(1, 61):
+        tick += 1
+        frames.append(render_frame(data, stats, orbit=index/60*2*math.pi,
+                                   wave_phase=tick/32*2*math.pi, wave_strength=1))
+    for index in range(1, 25):
+        tick += 1
+        lift = 1-index/24
+        frames.append(render_frame(data, stats, lift=lift,
+                                   wave_phase=tick/32*2*math.pi, wave_strength=ease(lift)))
     frames.append(flat)
-    save_gif(frames, ASSETS / GIF_NAME, duration=70, hold=1000, palette_source=still)
+    save_gif(frames, ASSETS / GIF_NAME, duration=80, hold=1000, palette_source=still)
 
