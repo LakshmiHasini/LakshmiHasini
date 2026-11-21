@@ -7,7 +7,7 @@ from PIL import Image, ImageColor, ImageDraw
 from art import ACCENT, ASSETS, BG, FG, GRID, MUTED, font, save_gif
 
 WIDTH, HEIGHT, SCALE = 1280, 660, 2
-GIF_NAME = "github-activity-3d-sage.gif"
+GIF_NAME = "github-activity-3d-wave-sage.gif"
 PNG_NAME = "github-activity-3d-sage.png"
 
 
@@ -39,6 +39,18 @@ def ease(value):
     return value*value*(3-2*value)
 
 
+def wave_reveal(progress, week, weekday, week_count):
+    """Sweep diagonally across the calendar, then settle at the exact data height."""
+    position = (week+weekday*0.22)/max(1, week_count-1+6*0.22)
+    local = (progress-position*0.56)/0.44
+    if local <= 0:
+        return 0
+    if local >= 1:
+        return 1
+    # A soft overshoot gives the moving front a wave crest without changing the data.
+    return 1-(1-local)**3*math.cos(1.5*math.pi*local)
+
+
 def render_frame(data, stats, lift=1, orbit=0):
     image = Image.new("RGB", (WIDTH*SCALE, HEIGHT*SCALE), BG)
     draw = ImageDraw.Draw(image)
@@ -64,7 +76,8 @@ def render_frame(data, stats, lift=1, orbit=0):
     text(1240, 68, "REAL DAYS. REAL PROGRESS.", 13, MUTED, mono=True, anchor="rt")
 
     # Both projections preserve weekday order; only the camera and height reveal change.
-    p = ease(lift)
+    p = ease(lift/0.3)
+    wave_progress = max(0, min(1, (lift-0.18)/0.82))
     ux = 21+(19-21)*p
     uy = (1.4+0.4*math.sin(orbit))*p
     vx = (-9+0.65*math.sin(orbit))*p
@@ -85,7 +98,8 @@ def render_frame(data, stats, lift=1, orbit=0):
     for week, weekday, value in blocks:
         size = 0.78
         level = 0 if value == 0 else min(4, 1+int(math.log2(value)))
-        height = (4+value/peak*151)*p if value else 0
+        reveal = wave_reveal(wave_progress, week, weekday, len(data["weeks"]))
+        height = (4+value/peak*151)*reveal if value else 0
         base = [project(week, weekday), project(week+size, weekday),
                 project(week+size, weekday+size), project(week, weekday+size)]
         top = [(x, y-height) for x, y in base]
@@ -142,10 +156,10 @@ def render_activity(data):
     still.save(ASSETS / PNG_NAME, optimize=True)
     flat = render_frame(data, stats, lift=0)
     frames = [flat]*8
-    frames += [render_frame(data, stats, lift=index/30) for index in range(1, 31)]
+    frames += [render_frame(data, stats, lift=index/48) for index in range(1, 49)]
     frames += [render_frame(data, stats, orbit=index/24*2*math.pi) for index in range(1, 25)]
     frames += [still]*45
-    frames += [render_frame(data, stats, lift=1-index/20) for index in range(1, 21)]
+    frames += [render_frame(data, stats, lift=1-index/28) for index in range(1, 29)]
     frames.append(flat)
     save_gif(frames, ASSETS / GIF_NAME, duration=70, hold=1000, palette_source=still)
 
