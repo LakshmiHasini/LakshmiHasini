@@ -45,6 +45,10 @@ python scripts/refresh_profile.py --render-only
 
 The scripts look for common system fonts on Linux, macOS, and Windows and fall back to Pillow's default font. Slight typography differences between operating systems are expected.
 
+## Visual panels
+
+`scripts/build_profile_art.py` generates the original introduction and toolkit SVG panels, including separate mobile compositions. Edit their copy there and run `python scripts/build_profile_art.py` to regenerate them. The README retains expandable text versions. The shared violet-and-ink palette is defined in `scripts/art.py`; regenerate the banner, panels, and activity images after changing it.
+
 ## Edit the content
 
 Update `README.md` directly for your bio, education, skills, projects, and links. The refresh workflow only commits the activity assets and data, so it preserves your text and portrait banner.

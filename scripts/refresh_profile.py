@@ -132,7 +132,7 @@ def draw_activity(data):
     weeks = data["weeks"]
     image = Image.new("RGB", (1280, 350), BG)
     draw = ImageDraw.Draw(image)
-    draw.rounded_rectangle((0, 0, 1279, 349), radius=20, outline="#314039", width=2)
+    draw.rounded_rectangle((0, 0, 1279, 349), radius=20, outline="#40364f", width=2)
     draw.text((38, 27), "A year of building.", font=font(30, bold=True), fill=FG)
     headline = f"{data['totalContributions']:,} contributions"
     draw.text((1238, 34), headline, font=font(20, mono=True), fill=ACCENT, anchor="rt")
@@ -185,14 +185,14 @@ def card(title, username, metric, caption, detail, verified, icon):
     return "\n".join([
         '<svg xmlns="http://www.w3.org/2000/svg" width="620" height="286" viewBox="0 0 620 286" role="img">',
         f'<title>{title_xml}</title>',
-        f'<rect x="1" y="1" width="618" height="284" rx="20" fill="{BG}" stroke="#314039" stroke-width="2"/>',
-        f'<rect x="30" y="28" width="38" height="38" rx="10" fill="#22392b"/>',
+        f'<rect x="1" y="1" width="618" height="284" rx="20" fill="{BG}" stroke="#40364f" stroke-width="2"/>',
+        f'<rect x="30" y="28" width="38" height="38" rx="10" fill="#32263f"/>',
         svg_text(49, 54, icon, 23, ACCENT, "700", "middle", True),
         svg_text(82, 54, title, 24, weight="600"),
         svg_text(30, 98, username, 16, MUTED, mono=True),
         svg_text(28, 165, metric, 58, ACCENT, "700"),
         svg_text(30, 195, caption, 18),
-        '<path d="M30 216H590" stroke="#314039"/>',
+        '<path d="M30 216H590" stroke="#40364f"/>',
         svg_text(30, 246, detail, 17, MUTED),
         svg_text(590, 269, verified, 12, MUTED, anchor="end"),
         '</svg>',
@@ -217,6 +217,40 @@ def draw_cards(state, config):
             svg = card(title, config[platform], "—", "Statistics temporarily unavailable",
                        "Open my profile for current activity", "Awaiting a verified refresh", icon)
             (ASSETS / f"{platform}.svg").write_text(svg)
+    draw_combined_cards(state, config)
+
+
+def draw_combined_cards(state, config):
+    desktop = ['<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="286" viewBox="0 0 1280 286" role="img">',
+               '<title>My LeetCode and HackerRank practice statistics</title>']
+    mobile = ['<svg xmlns="http://www.w3.org/2000/svg" width="680" height="820" viewBox="0 0 680 820" role="img">',
+              '<title>My LeetCode and HackerRank practice statistics</title>']
+    for i, (platform, title) in enumerate([("leetcode", "LeetCode"), ("hackerrank", "HackerRank")]):
+        source = (ASSETS / f"{platform}.svg").read_text()
+        desktop.append(source.replace('<svg xmlns=', f'<svg x="{i*660}" xmlns=', 1))
+        mobile.append(f'<g transform="translate(0 {i*420})">')
+        mobile.append(f'<rect x="1" y="1" width="678" height="398" rx="20" fill="{BG}" stroke="#40364f" stroke-width="2"/>')
+        mobile.append(svg_text(32, 63, title, 38, weight="600"))
+        mobile.append(svg_text(32, 109, config[platform], 26, MUTED, mono=True))
+        data = state.get(platform)
+        if data:
+            if platform == "leetcode":
+                counts = data["solved"]
+                metric, label = counts["All"], "unique questions solved"
+                detail = f"Easy {counts['Easy']}   ·   Medium {counts['Medium']}   ·   Hard {counts['Hard']}"
+            else:
+                metric, label = data["submissions"], "practice submissions"
+                detail = f"{data['activeDays']} active practice days"
+            verified = verified_label(data)
+        else:
+            metric, label, detail, verified = "—", "Statistics temporarily unavailable", "View my profile for current activity", "Awaiting a verified refresh"
+        mobile += [svg_text(28, 211, metric, 90, ACCENT, "700"),
+                   svg_text(32, 258, label, 30),
+                   '<path d="M32 285H648" stroke="#40364f"/>',
+                   svg_text(32, 328, detail, 28, MUTED),
+                   svg_text(32, 370, verified, 22, MUTED), '</g>']
+    (ASSETS / "coding-practice.svg").write_text('\n'.join(desktop+['</svg>'])+'\n')
+    (ASSETS / "coding-practice-mobile.svg").write_text('\n'.join(mobile+['</svg>'])+'\n')
 
 
 def draw_unavailable_activity():

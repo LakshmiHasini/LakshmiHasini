@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="620" height="286" viewBox="0 0 620 286" role="img">
 <title>LeetCode — Lakshmihasini_13: 11 unique questions solved</title>
-<rect x="1" y="1" width="618" height="284" rx="20" fill="#0d1117" stroke="#314039" stroke-width="2"/>
-<rect x="30" y="28" width="38" height="38" rx="10" fill="#22392b"/>
-<text x="49" y="54" font-family="ui-monospace,Consolas,monospace" font-size="23" font-weight="700" fill="#b5efbd" text-anchor="middle">&lt;&gt;</text>
-<text x="82" y="54" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="600" fill="#eef3ed" text-anchor="start">LeetCode</text>
-<text x="30" y="98" font-family="ui-monospace,Consolas,monospace" font-size="16" font-weight="400" fill="#9aa79e" text-anchor="start">Lakshmihasini_13</text>
-<text x="28" y="165" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="58" font-weight="700" fill="#b5efbd" text-anchor="start">11</text>
-<text x="30" y="195" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="18" font-weight="400" fill="#eef3ed" text-anchor="start">unique questions solved</text>
-<path d="M30 216H590" stroke="#314039"/>
-<text x="30" y="246" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#9aa79e" text-anchor="start">Easy 11   ·   Medium 0   ·   Hard 0</text>
-<text x="590" y="269" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="12" font-weight="400" fill="#9aa79e" text-anchor="end">Verified 21 Nov 2026</text>
+<rect x="1" y="1" width="618" height="284" rx="20" fill="#111018" stroke="#40364f" stroke-width="2"/>
+<rect x="30" y="28" width="38" height="38" rx="10" fill="#32263f"/>
+<text x="49" y="54" font-family="ui-monospace,Consolas,monospace" font-size="23" font-weight="700" fill="#c7bbff" text-anchor="middle">&lt;&gt;</text>
+<text x="82" y="54" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="600" fill="#f4f0fa" text-anchor="start">LeetCode</text>
+<text x="30" y="98" font-family="ui-monospace,Consolas,monospace" font-size="16" font-weight="400" fill="#aca5b9" text-anchor="start">Lakshmihasini_13</text>
+<text x="28" y="165" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="58" font-weight="700" fill="#c7bbff" text-anchor="start">11</text>
+<text x="30" y="195" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="18" font-weight="400" fill="#f4f0fa" text-anchor="start">unique questions solved</text>
+<path d="M30 216H590" stroke="#40364f"/>
+<text x="30" y="246" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="400" fill="#aca5b9" text-anchor="start">Easy 11   ·   Medium 0   ·   Hard 0</text>
+<text x="590" y="269" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="12" font-weight="400" fill="#aca5b9" text-anchor="end">Verified 21 Nov 2026</text>
 </svg>

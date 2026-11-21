@@ -17,8 +17,8 @@ BAYER = [
 WIDTH, HEIGHT = 1280, 480
 PORTRAIT_WIDTH = 600
 PORTRAIT_X = WIDTH - PORTRAIT_WIDTH
-DARK = (13, 17, 23)
-LIGHT = (206, 226, 210)
+DARK = (17, 16, 24)
+LIGHT = (221, 214, 244)
 
 
 def dither(image, pixel_size=3):
@@ -48,7 +48,7 @@ def compose(portrait):
     canvas.paste(Image.new("RGB", portrait.size, BG), (PORTRAIT_X, 0), fade)
     draw = ImageDraw.Draw(canvas)
     draw.text((54, 35), "BATCHU LAKSHMI HASINI", font=font(15, mono=True), fill=ACCENT)
-    draw.line((54, 75, 617, 75), fill="#36433c", width=1)
+    draw.line((54, 75, 617, 75), fill="#40364f", width=1)
     draw.text((48, 109), "Lakshmi", font=font(100, bold=True), fill=FG)
     draw.text((48, 208), "Hasini.", font=font(100, bold=True), fill=FG)
     draw.text((55, 339), "Where logic meets design.", font=font(25), fill=FG)

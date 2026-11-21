@@ -17,7 +17,15 @@
 
 ---
 
-## The person behind the pixels
+## A little introduction
+
+<picture>
+  <source media="(max-width: 1100px)" srcset="assets/about-mobile.svg">
+  <img src="assets/about.svg" alt="Curious by nature, a builder by practice. I'm a B.Tech Computer Science student at PW Institute of Innovation and Medhavi Skills University in Bengaluru, open to internships and hackathon teams." width="100%">
+</picture>
+
+<details>
+<summary>More about me</summary>
 
 I'm **Batchu Lakshmi Hasini**, studying Computer Science at **PW Institute of Innovation · Medhavi Skills University**. I enjoy turning a complex problem into an interface that feels simple, responsive, and useful.
 
@@ -27,7 +35,17 @@ I build across the frontend and backend, practise data structures and algorithms
 - **I work with:** React, TypeScript, Node.js, and the fundamentals underneath them.
 - **I'm open to:** internships, collaborations, and interesting hackathon teams.
 
+</details>
+
 ## My toolkit
+
+<picture>
+  <source media="(max-width: 1100px)" srcset="assets/toolkit-mobile.svg">
+  <img src="assets/toolkit.svg" alt="My toolkit: React, TypeScript, JavaScript, HTML, CSS, Tailwind, Vite; Node.js, Express, MongoDB, MySQL, Python, Supabase; C, C++, Java, DSA, operating systems, and Git. Exploring AI agents, AWS, Web3, and Algorand through projects." width="100%">
+</picture>
+
+<details>
+<summary>Skills as text</summary>
 
 **Languages** &nbsp; `C` `C++` `Java` `JavaScript` `TypeScript` `Python`
 
@@ -38,6 +56,8 @@ I build across the frontend and backend, practise data structures and algorithms
 **Exploring through projects** &nbsp; `AWS` `AI agents` `Blockchain` `Algorand` `Smart contracts`
 
 **Foundations** &nbsp; `Data structures` `Algorithms` `Operating systems` `Git & GitHub`
+
+</details>
 
 ## Things I've built
 
@@ -102,14 +122,10 @@ A decentralised marketplace for freight shipping and freelancing on Flare, with 
 
 ## Problem-solving practice
 
-<p>
-  <a href="https://leetcode.com/u/Lakshmihasini_13/">
-    <img src="assets/leetcode.svg" alt="My LeetCode solved problems, split into easy, medium, and hard" width="49%">
-  </a>
-  <a href="https://www.hackerrank.com/profile/lakshmihasini8">
-    <img src="assets/hackerrank.svg" alt="My HackerRank submission activity and active practice days" width="49%">
-  </a>
-</p>
+<picture>
+  <source media="(max-width: 1100px)" srcset="assets/coding-practice-mobile.svg">
+  <img src="assets/coding-practice.svg" alt="My LeetCode unique solved questions by difficulty, and my HackerRank submissions and active practice days" width="100%">
+</picture>
 
 LeetCode counts unique solved questions. HackerRank shows submissions and active days; repeated attempts can count more than once.
 

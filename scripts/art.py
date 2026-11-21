@@ -5,11 +5,11 @@ from PIL import Image, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
-BG = "#0d1117"
-FG = "#eef3ed"
-MUTED = "#9aa79e"
-ACCENT = "#b5efbd"
-GRID = ["#1c2724", "#304c3a", "#527d56", "#80b37d", "#b5efbd"]
+BG = "#111018"
+FG = "#f4f0fa"
+MUTED = "#aca5b9"
+ACCENT = "#c7bbff"
+GRID = ["#252130", "#443557", "#6c518c", "#9d7dc3", "#c7bbff"]
 
 
 def font(size, bold=False, mono=False):

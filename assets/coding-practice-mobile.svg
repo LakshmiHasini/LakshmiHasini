@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="820" viewBox="0 0 680 820" role="img">
+<title>My LeetCode and HackerRank practice statistics</title>
+<g transform="translate(0 0)">
+<rect x="1" y="1" width="678" height="398" rx="20" fill="#111018" stroke="#40364f" stroke-width="2"/>
+<text x="32" y="63" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="38" font-weight="600" fill="#f4f0fa" text-anchor="start">LeetCode</text>
+<text x="32" y="109" font-family="ui-monospace,Consolas,monospace" font-size="26" font-weight="400" fill="#aca5b9" text-anchor="start">Lakshmihasini_13</text>
+<text x="28" y="211" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="90" font-weight="700" fill="#c7bbff" text-anchor="start">11</text>
+<text x="32" y="258" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="30" font-weight="400" fill="#f4f0fa" text-anchor="start">unique questions solved</text>
+<path d="M32 285H648" stroke="#40364f"/>
+<text x="32" y="328" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="28" font-weight="400" fill="#aca5b9" text-anchor="start">Easy 11   ·   Medium 0   ·   Hard 0</text>
+<text x="32" y="370" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aca5b9" text-anchor="start">Verified 21 Nov 2026</text>
+</g>
+<g transform="translate(0 420)">
+<rect x="1" y="1" width="678" height="398" rx="20" fill="#111018" stroke="#40364f" stroke-width="2"/>
+<text x="32" y="63" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="38" font-weight="600" fill="#f4f0fa" text-anchor="start">HackerRank</text>
+<text x="32" y="109" font-family="ui-monospace,Consolas,monospace" font-size="26" font-weight="400" fill="#aca5b9" text-anchor="start">lakshmihasini8</text>
+<text x="28" y="211" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="90" font-weight="700" fill="#c7bbff" text-anchor="start">209</text>
+<text x="32" y="258" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="30" font-weight="400" fill="#f4f0fa" text-anchor="start">practice submissions</text>
+<path d="M32 285H648" stroke="#40364f"/>
+<text x="32" y="328" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="28" font-weight="400" fill="#aca5b9" text-anchor="start">36 active practice days</text>
+<text x="32" y="370" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aca5b9" text-anchor="start">Verified 21 Nov 2026</text>
+</g>
+</svg>
