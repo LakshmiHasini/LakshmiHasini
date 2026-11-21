@@ -89,7 +89,7 @@ A decentralised marketplace for freight shipping and freelancing on Flare, with 
 <a href="https://github.com/LakshmiHasini?tab=overview">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="assets/github-activity.png">
-    <img src="assets/github-activity.gif" alt="My GitHub contribution calendar for the past year, refreshed daily" width="100%">
+    <img src="assets/github-activity.gif" alt="My GitHub contribution calendar for the past year" width="100%">
   </picture>
 </a>
 
@@ -115,7 +115,7 @@ LeetCode counts unique solved questions. HackerRank shows submissions and active
 
 [LeetCode questions](https://leetcode.com/u/Lakshmihasini_13/) · [HackerRank profile](https://www.hackerrank.com/profile/lakshmihasini8) · [HackerRank solutions I've shared](https://github.com/LakshmiHasini/HackerRank) · [My Hackos activity](https://www.hackerrank.com/lakshmihasini8/hackos/page/1)
 
-<sub>The activity chart and practice cards refresh daily. Each image shows when its data was last verified.</sub>
+<sub>Each image shows when its data was last verified.</sub>
 
 ## Let's build something useful
 
