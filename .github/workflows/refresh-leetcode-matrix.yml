@@ -1,0 +1,46 @@
+name: Refresh LeetCode chart
+
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/refresh-leetcode-matrix.yml
+      - profile.json
+      - requirements.txt
+      - scripts/art.py
+      - scripts/build_leetcode_matrix.py
+      - scripts/refresh_profile.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-leetcode-matrix
+
+jobs:
+  refresh:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install chart renderer
+        run: python -m pip install -r requirements.txt
+      - name: Check public practice stats
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/build_leetcode_matrix.py --refresh
+      - name: Save updated chart
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git add -- data/leetcode-matrix.json assets/leetcode-matrix.gif assets/leetcode-matrix.png
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Refresh LeetCode practice chart'
+          git push origin "HEAD:refs/heads/$DEFAULT_BRANCH"

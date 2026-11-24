@@ -1,129 +1,83 @@
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/dither-banner-sage.png">
-  <img src="assets/dither-banner-sage.gif" alt="Lakshmi Hasini — where logic meets design, with an animated dither portrait of me" width="100%">
-</picture>
-
-<p align="center">
-  <b>B.Tech CS student · Frontend developer · Hackathon builder</b><br>
-  Bengaluru, India · Open to frontend and software engineering internships
-</p>
-
-<p align="center">
-  <a href="https://lakshmihasini.in/">Portfolio</a> &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/batchu-lakshmi-hasini-09b092318/">LinkedIn</a> &nbsp;·&nbsp;
-  <a href="https://leetcode.com/u/Lakshmihasini_13/">LeetCode</a> &nbsp;·&nbsp;
-  <a href="https://www.hackerrank.com/profile/lakshmihasini8">HackerRank</a>
-</p>
-
----
-
-## The person behind the pixels
-
-I'm **Batchu Lakshmi Hasini**, studying Computer Science at **PW Institute of Innovation · Medhavi Skills University**. I enjoy turning a complex problem into an interface that feels simple, responsive, and useful.
-
-I build across the frontend and backend, practise data structures and algorithms, and explore AI and blockchain through hands-on projects. Hackathons are where I get to bring those interests together with a team and ship an idea.
-
-- **I care about:** thoughtful interfaces, clear code, and software that helps people.
-- **I work with:** React, TypeScript, Node.js, and the fundamentals underneath them.
-- **I'm open to:** internships, collaborations, and interesting hackathon teams.
-
-## My toolkit
-
-**Languages** &nbsp; `C` `C++` `Java` `JavaScript` `TypeScript` `Python`
-
-**Frontend** &nbsp; `React` `HTML` `CSS` `Tailwind CSS` `Vite` `Responsive design`
-
-**Backend & data** &nbsp; `Node.js` `Express` `MongoDB` `MySQL` `Supabase`
-
-**Exploring through projects** &nbsp; `AWS` `AI agents` `Blockchain` `Algorand` `Smart contracts`
-
-**Foundations** &nbsp; `Data structures` `Algorithms` `Operating systems` `Git & GitHub`
-
-## Things I've built
-
-### SevaRecover
-
-An AI-powered platform that helps people understand failures in public-service applications and find practical recovery steps, with an agent backend on AWS.
-
-`React` `TypeScript` `Tailwind CSS` `Python` `AWS Strands` `OpenSearch`
-
-[Source code](https://github.com/LakshmiHasini/SevaRecover) · [Live demo](https://frontend-pink-two-8nh56blhuw.vercel.app)
-
-### Recall
-
-An incident investigation workspace that draws on previous reports and verified resolutions using Hindsight memory, keeping the supporting evidence visible.
-
-`React` `TypeScript` `Cloudflare D1` `Hindsight`
-
-[Source code](https://github.com/LakshmiHasini/recall-incident-intelligence) · [Live app](https://recall-incident-memory.lakshmihasini8.chatgpt.site)
-
-### JobFit Lab
-
-A career preparation workspace that connects job requirements to project evidence, preparation tasks, resume review, and interview practice.
-
-`React` `TypeScript` `Node.js` `Express` `MongoDB`
-
-[Source code](https://github.com/LakshmiHasini/JobFit-Lab)
-
-### ChainMatrix · team project
-
-A decentralised marketplace for freight shipping and freelancing on Flare, with smart-contract escrow, live pricing, and gasless onboarding.
-
-`React` `Node.js` `Express` `Supabase` `Flare`
-
-[Team repository](https://github.com/iamksr05/chain-matrix) · [Live demo](https://chain-matrix.vercel.app/)
-
-<details>
-<summary><b>A few more builds</b></summary>
-
-- **[Campus Voting dApp](https://github.com/LakshmiHasini/sairam)** — a campus election hackathon build using Python, Algorand, and AlgoKit. [Live demo](https://sairam-new-psi.vercel.app)
-- **[Event Management System](https://github.com/LakshmiHasini/IBM-Event-Management-System)** — event creation, registrations, and an organiser dashboard. [Live demo](https://ibm-event-management-system.vercel.app)
-- **[My portfolio](https://github.com/LakshmiHasini/portfolio-website)** — the home for my projects, skills, and story. [Visit](https://lakshmihasini.in/)
-
-</details>
-
-[Explore all my repositories](https://github.com/LakshmiHasini?tab=repositories)
-
-## A little progress, every day
-
-<a href="https://github.com/LakshmiHasini?tab=overview">
+<a href="https://lakshmihasini.in/">
   <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="assets/github-activity-full-wave-sage.png">
-    <img src="assets/github-activity-full-wave-sage.gif" alt="My real GitHub contribution calendar ripples as a complete 3D surface, with the entire grid and its bars moving together" width="100%">
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/editorial-hero.png">
+    <img src="assets/editorial-hero.gif" alt="Lakshmi Hasini — student, developer, and hackathon builder. Where logic meets design. An editorial portrait, SevaRecover project book, and a note to tomorrow: build something useful, make it feel simple, keep learning every day." width="100%">
   </picture>
 </a>
 
-<details>
-<summary>Prefer a still image?</summary>
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/math-scramble.png">
+  <img src="assets/math-scramble.gif" alt="I'm Batchu Lakshmi Hasini, studying Computer Science at PW Institute of Innovation · Medhavi Skills University. I enjoy turning a complex problem into an interface that feels simple, responsive, and useful. I build across the frontend and backend, practise data structures and algorithms, and explore AI and blockchain through hands-on projects. Hackathons are where I get to bring those interests together with a team and ship an idea. • I care about: thoughtful interfaces, clear code, and software that helps people. • I work with: React, TypeScript, Node.js, and the fundamentals underneath them. • I'm open to: internships, collaborations, and interesting hackathon teams." width="100%">
+</picture>
 
-![3D GitHub contribution heatmap without animation](assets/github-activity-full-wave-sage.png)
+<h2>
+  <a name="my-toolkit"></a>
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/headings/my-toolkit.png">
+    <img src="assets/headings/my-toolkit.gif" alt="My toolkit" width="100%">
+  </picture>
+</h2>
 
-</details>
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/toolkit-marquee.png">
+  <img src="assets/toolkit-marquee.gif" alt="Languages: C, C++, Java, JavaScript, TypeScript, Python. Frontend: React, HTML, CSS, Tailwind CSS, Vite, Responsive design. Backend &amp; data: Node.js, Express, MongoDB, MySQL, Supabase. Exploring through projects: AWS, AI agents, Blockchain, Algorand, Smart contracts. Foundations: Data structures, Algorithms, Operating systems, Git &amp; GitHub." width="100%">
+</picture>
 
-## Problem-solving practice
+<h2>
+  <a name="things-ive-built"></a>
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/headings/things-ive-built.png">
+    <img src="assets/headings/things-ive-built.gif" alt="Things I've built" width="100%">
+  </picture>
+</h2>
 
-<p>
-  <a href="https://leetcode.com/u/Lakshmihasini_13/">
-    <img src="assets/leetcode-sage.svg" alt="My LeetCode solved problems, split into easy, medium, and hard" width="49%">
-  </a>
-  <a href="https://www.hackerrank.com/profile/lakshmihasini8">
-    <img src="assets/hackerrank-sage.svg" alt="My HackerRank submission activity and active practice days" width="49%">
-  </a>
-</p>
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/project-reel.png">
+  <img src="assets/project-reel.gif" alt="Project screenshots from SevaRecover, Recall, the JobFit Lab demo workspace, and ChainMatrix." width="100%">
+</picture>
 
-LeetCode counts unique solved questions. HackerRank shows submissions and active days; repeated attempts can count more than once.
+<h2>
+  <a name="github-activity"></a>
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/headings/github-activity.png">
+    <img src="assets/headings/github-activity.gif" alt="GitHub activity" width="100%">
+  </picture>
+</h2>
 
-[LeetCode questions](https://leetcode.com/u/Lakshmihasini_13/) · [HackerRank profile](https://www.hackerrank.com/profile/lakshmihasini8) · [HackerRank solutions I've shared](https://github.com/LakshmiHasini/HackerRank) · [My Hackos activity](https://www.hackerrank.com/lakshmihasini8/hackos/page/1)
+<a href="https://github.com/LakshmiHasini?tab=overview">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/github-activity-card.png">
+    <img src="assets/github-activity-card.gif" alt="Lakshmi Hasini’s GitHub calendar shows 260 contributions from November 23, 2025 through November 24, 2026. Brighter squares show days with more contributions. Open the GitHub profile for daily counts." width="100%">
+  </picture>
+</a>
 
-<sub>Each image shows when its data was last verified.</sub>
+<h2>
+  <a name="leetcode-progress"></a>
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/headings/leetcode-progress.png">
+    <img src="assets/headings/leetcode-progress.gif" alt="LeetCode progress" width="100%">
+  </picture>
+</h2>
 
-## Let's build something useful
+<a href="https://leetcode.com/u/Lakshmihasini_13/">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/leetcode-matrix.png">
+    <img src="assets/leetcode-matrix.gif" alt="LED chart showing Lakshmi Hasini’s unique LeetCode solves by difficulty, with a separate count and examples of practice solution files on GitHub. Open LeetCode for the current profile." width="100%">
+  </picture>
+</a>
 
-Have an internship opportunity, a project idea, or a hackathon team in mind? I'd love to connect.
+<h2>
+  <a name="lets-connect"></a>
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/headings/lets-connect.png">
+    <img src="assets/headings/lets-connect.gif" alt="Let's connect" width="100%">
+  </picture>
+</h2>
 
-[Message me on LinkedIn](https://www.linkedin.com/in/batchu-lakshmi-hasini-09b092318/) · [Visit my portfolio](https://lakshmihasini.in/)
-
----
-
-<p align="center"><sub>Logic meets design. Build, learn, repeat.</sub></p>
-
+<!-- Crowd Canvas adapted from Skiper UI (https://skiper-ui.com/v1/skiper39). Illustrations by Pablo Stanley's Open Peeps (https://www.openpeeps.com/). -->
+<a href="https://www.linkedin.com/in/batchu-lakshmi-hasini-09b092318/">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="assets/crowd-footer.png">
+    <img src="assets/crowd-footer.gif" alt="Lakshmi Hasini. Let's build something useful. Open to internships, collaborations, and hackathons. A hand-drawn crowd walks across the footer. Connect on LinkedIn." width="100%">
+  </picture>
+</a>

@@ -1,0 +1,31 @@
+{
+  "leetcode": {
+    "username": "Lakshmihasini_13",
+    "solved": {
+      "All": 13,
+      "Easy": 13,
+      "Medium": 0,
+      "Hard": 0
+    },
+    "updatedOn": "2026-11-24"
+  },
+  "github": {
+    "repository": "LakshmiHasini/HackerRank",
+    "solutionFiles": 40,
+    "examples": [
+      {
+        "path": "Sum-of-two-numbers.c",
+        "title": "Sum of two numbers"
+      },
+      {
+        "path": "If-Else_Leap Year.c",
+        "title": "Leap Year"
+      },
+      {
+        "path": "Swap Two Numbers.c",
+        "title": "Swap Two Numbers"
+      }
+    ],
+    "updatedOn": "2026-11-24"
+  }
+}
